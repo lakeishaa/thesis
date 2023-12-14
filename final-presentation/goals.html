@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      ul.a {
+        list-style-type: circle;
+      }
+
+      #bold {
+        /* font-weight: bold; */
+      }
+
+      #bold-1 {
+        text-decoration: underline;
+      }
+
+      * {
+        font-family: "IBM Plex Mono", monospace;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="list">
+      <p>&nbsp;&nbsp;Goals</p>
+      <ul class="a">
+        <li>Make more web experiments? But how much?</li>
+        <!-- <li id="bold">How we interact with one another</li> -->
+        <li>
+          Try working with
+          <a
+            href="https://developer.spotify.com/documentation/web-api/reference/get-audio-analysis"
+          >
+            <span>spotify api</span>
+          </a>
+        </li>
+        <li>
+          Try thinking about a design system that ties everything together. How
+          do I brand this as a project that is easily digestible?
+          <br />
+          <ul class="a">
+            <li>
+              Childplay -- dichotomy between adult/child environment -- creating
+              a digital space for adults through the web in an age where the
+              digital world is taken too seriously
+            </li>
+            <li>
+              Surveillance -- living in the age of surveillance and now finally
+              having the autonomy to allow the camera to turn at yourself
+            </li>
+            <li>
+              Identity -- camera facing yourself -- the positionality of turning
+              the camera towards yourself and seeing your face as an output
+            </li>
+            <li>????</li>
+          </ul>
+        </li>
+        <li class="demo" id="firebase-demo">
+          <a href="assets/firebase-demo.png" onclick="openImageWindow(event)">
+            Archive of previews of everyone's output ever (use firebase)
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      function openImageWindow(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        createNewWindows("FirebaseDemo", [event.target.href]);
+      }
+
+      function createNewWindows(input, urls) {
+        // Use Promise.all to open all windows concurrently
+        Promise.all(
+          urls.map((url, index) => {
+            let left = Math.floor(Math.random() * (screen.width - 600));
+            let top = Math.floor(Math.random() * (screen.height - 300));
+
+            return window.open(
+              url,
+              `${input}Window${index + 1}`,
+              `left=${left},top=${top},width=600,height=300`
+            );
+          })
+        );
+      }
+    </script>
+  </body>
+</html>

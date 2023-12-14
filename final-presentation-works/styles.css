@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+#thingmabob {
+  text-align: center;
+}
+
+#doohickey {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+#ultra-container {
+  display: inline-block;
+}
+
+#ultra {
+  margin-bottom: 10px;
+}
+
+#jit-area {
+  text-align: center;
+  margin-top: 10px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 21%;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
