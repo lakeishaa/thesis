@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Video Capture</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script>
+      let video;
+
+      function setup() {
+        // Set canvas size to match the window dimensions
+        createCanvas(windowWidth, windowHeight);
+
+        // Create a video capture object
+        video = createCapture(VIDEO);
+
+        // Set video size to match the canvas size
+        video.size(width, height);
+
+        // Hide the video element, as we will draw it on the canvas
+        video.hide();
+      }
+
+      function draw() {
+        background(255);
+
+        // Flip the video horizontally by scaling by -1 in the x-axis
+        scale(-1, 1);
+
+        // Draw the video on the canvas
+        image(video, -width, 0, width, height);
+      }
+
+      // Resize canvas and video when the window is resized
+      function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);
+        video.size(width, height);
+      }
+    </script>
+  </body>
+</html>

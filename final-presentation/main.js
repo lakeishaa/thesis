@@ -78,6 +78,15 @@ ultra.addEventListener("keyup", (evt) => {
         "assets/mirrors.jpeg",
       ]);
     } else if (
+      newJit.lastElementChild.textContent.toLowerCase() === "exploration 4"
+    ) {
+      createNewWindows("exploration 4", [
+        // "https://boniver.withspotify.com/",
+        "experiment-5.html",
+        "experiment-5.html",
+        "experiment-5.html",
+      ]);
+    } else if (
       newJit.lastElementChild.textContent.toLowerCase() === "research 4"
     ) {
       openSpecificImages(["tal-1.png", "tal-2.png", "tal-3.png"]);
