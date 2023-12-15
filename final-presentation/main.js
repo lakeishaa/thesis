@@ -20,8 +20,13 @@ ultra.addEventListener("keyup", (evt) => {
       // Call the closeWindow function to close the current window
       closeWindow();
     } else if (newJit.lastElementChild.textContent.toLowerCase() === "256") {
-      // Call createNewWindow with the specified images
-      createNewWindow("256");
+      openSpecificImages([
+        "256-1.jpg",
+        "256-2.jpg",
+        "256-3.jpg",
+        "256-4.jpg",
+        "256-5.jpg",
+      ]);
     } else if (
       newJit.lastElementChild.textContent.toLowerCase() === "design sprint"
     ) {
@@ -117,7 +122,13 @@ let params =
 
 function createNewWindow(input, url) {
   if (input === "256") {
-    openSpecificImages(["256-1.jpg", "256-2.jpg", "256-3.jpg"]);
+    openSpecificImages([
+      "256-1.jpg",
+      "256-2.jpg",
+      "256-3.jpg,",
+      "256-4.jpg,",
+      "256-5.jpg,",
+    ]);
     return;
   }
 
