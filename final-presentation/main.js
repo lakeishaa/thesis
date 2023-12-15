@@ -27,6 +27,10 @@ ultra.addEventListener("keyup", (evt) => {
     ) {
       createNewWindow("design sprint", "designsprint.html");
     } else if (
+      newJit.lastElementChild.textContent.toLowerCase() === "ugly design"
+    ) {
+      openSpecificImages(["-1.jpg", "-2.jpg", "-3.jpg", "-4.jpg"]);
+    } else if (
       newJit.lastElementChild.textContent.toLowerCase() === "research"
     ) {
       createNewWindow(
@@ -76,6 +80,7 @@ ultra.addEventListener("keyup", (evt) => {
         "https://yhsong.com/",
         "https://minimoogmodeld.com/",
         "assets/mirrors.jpeg",
+        "audienceandperformer.html",
       ]);
     } else if (
       newJit.lastElementChild.textContent.toLowerCase() === "exploration 4"
