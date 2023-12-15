@@ -186,4 +186,4 @@ function closeWindow() {
   // If the user clicks "no," do nothing
   // (You can add additional handling here if needed)
 }
-console.log(window.close());
+// console.log(window.close());
