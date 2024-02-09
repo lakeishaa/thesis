@@ -2,9 +2,15 @@ var capture;
 var tracker;
 var w = 640,
   h = 480;
+var canvasX, canvasY;
 
 function setup() {
   createCanvas(800, 800); // Double the size of the canvas
+
+  canvasX = (windowWidth - width) / 2; // Calculate canvas X position
+  canvasY = (windowHeight - height) / 2; // Calculate canvas Y position
+
+  createCanvas(800, 800).position(canvasX, canvasY); // Set canvas position
 
   capture = createCapture(
     {
@@ -34,6 +40,7 @@ function draw() {
 
   if (positions.length > 0) {
     background(255); // Set the background color to grey
+    // background(150);
 
     // Drop shadow for the white circle
     noStroke();
