@@ -34,7 +34,16 @@ ultra.addEventListener("keyup", (evt) => {
     } else if (
       newJit.lastElementChild.textContent.toLowerCase() === "ugly design"
     ) {
-      openSpecificImages(["-1.jpg", "-2.jpg", "-3.jpg", "-4.jpg"]);
+      openSpecificImages([
+        "ugly-1.jpg",
+        "ugly-2.jpg",
+        "ugly-3.jpg",
+        "ugly-4.jpg",
+        "ugly-5.jpg",
+        ,
+        "ugly-6.jpg",
+        "ugly-7.jpg",
+      ]);
     } else if (
       newJit.lastElementChild.textContent.toLowerCase() === "research"
     ) {
