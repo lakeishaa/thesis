@@ -56,8 +56,20 @@ function draw() {
     // Iris
     let xc = constrain(map(positions[62][0], 0, w, width, 0), 340, 460); // Adjust the mapping and constrain
     let xs = constrain(map(positions[62][1], 0, h, 0, height), 340, 460); // Adjust the mapping and constrain
-    fill(0);
-    ellipse(xc, xs, 200); // Draw the iris circle
+    fill(0, 0, 20, 1);
+    circle(xc, xs, 200); // Double the size
+
+    // Draw webcam frame at the position of the iris
+    blendMode(OVERLAY);
+    tint(255, 100); // Set the transparency (100 = semi-transparent)
+
+    let frameSize = 180; // Size of the webcam frame
+    let frameX = xc - frameSize / 2; // X position of the frame
+    let frameY = xs - frameSize / 2; // Y position of the frame
+    image(capture, frameX, frameY, frameSize, frameSize);
+
+    // Reset blend mode for subsequent drawings
+    blendMode(BLEND);
 
     // Glare
     fill(255);
