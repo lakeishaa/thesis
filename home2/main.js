@@ -62,3 +62,39 @@ document.addEventListener("DOMContentLoaded", function () {
 //     divs.push(div);
 //   }
 // });
+
+let timerInterval;
+let seconds = 0,
+  minutes = 0,
+  hours = 0;
+
+function startStopwatch() {
+  timerInterval = setInterval(updateTimer, 1000);
+}
+
+function updateTimer() {
+  seconds++;
+  if (seconds === 60) {
+    seconds = 0;
+    minutes++;
+    if (minutes === 60) {
+      minutes = 0;
+      hours++;
+    }
+  }
+  updateTimerDisplay();
+}
+
+function updateTimerDisplay() {
+  const formattedTime = pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
+  document.getElementById("timer").innerText = formattedTime;
+}
+
+function pad(num) {
+  return (num < 10 ? "0" : "") + num;
+}
+
+// Start the stopwatch when the page loads
+startStopwatch();
+
+// You may want to handle pausing/resuming when the user switches tabs or leaves the page
