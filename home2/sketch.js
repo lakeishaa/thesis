@@ -1,3 +1,5 @@
+let embeddedSite;
+
 var capture;
 var tracker;
 var w = 640,
@@ -6,6 +8,13 @@ var canvasX, canvasY;
 
 function setup() {
   createCanvas(800, 800); // Double the size of the canvas
+
+  embeddedSite = createDiv(); // Create a div to hold the embedded website
+  embeddedSite.size(400, 400); // Set the size of the div
+  embeddedSite.position(0, 0); // Position the div at the top-left corner
+
+  // Load the embedded website
+  embeddedSite.elt.innerHTML = `<iframe id="embeddedFrame" src="experiment-fisheye.html" width="400" height="400"></iframe>`;
 
   canvasX = (windowWidth - width) / 2; // Calculate canvas X position
   canvasY = (windowHeight - height) / 2; // Calculate canvas Y position
@@ -40,7 +49,6 @@ function draw() {
 
   if (positions.length > 0) {
     background(255); // Set the background color to grey
-    // background(150);
 
     // Drop shadow for the white circle
     noStroke();
@@ -73,8 +81,26 @@ function draw() {
 
     // Glare
     fill(255);
-    // fill(0, 0, 100, 0.6);
     noStroke();
     ellipse(xc + 40, xs - 40, 40); // Draw the glare circle
+
+    // Calculate angle between mouse and center of the canvas
+    let centerX = width / 2;
+    let centerY = height / 2;
+    let angle = atan2(mouseY - centerY, mouseX - centerX);
+    angle = degrees(angle); // Convert radians to degrees
+    angle = (angle + 360) % 360; // Ensure angle is within 0 to 360 degrees
+    console.log("Angle:", angle);
+
+    // Draw a line from the center to the mouse with red stroke
+    stroke(255, 0, 0); // Set stroke color to red
+    line(centerX, centerY, mouseX, mouseY);
+
+    // Display the embedded website when angle is between 270 and 300 degrees
+    if (angle >= 270 && angle <= 300) {
+      embeddedSite.show(); // Show the embedded website
+    } else {
+      embeddedSite.hide(); // Hide the embedded website
+    }
   }
 }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Embedded Website</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  </head>
+  <body>
+    <h1>Embedded Website</h1>
+
+    <button onclick="requestCameraAccess()">Request Camera Access</button>
+
+    <!-- Div to hold the p5.js sketch -->
+    <div id="sketchContainer"></div>
+
+    <script>
+      let video;
+      let canvas;
+
+      function setup() {
+        // Create video element for the camera feed
+        video = createCapture(VIDEO);
+        video.size(320, 240); // Set the size of the video feed
+
+        // Create canvas to draw the video feed
+        canvas = createCanvas(320, 240);
+        canvas.parent("sketchContainer"); // Set the parent element for the canvas
+
+        // Hide the video element (optional)
+        video.hide();
+      }
+
+      function draw() {
+        // Draw the video feed onto the canvas
+        image(video, 0, 0, width, height);
+      }
+
+      function requestCameraAccess() {
+        // Request access to the camera
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then(function (stream) {
+            // Camera access granted, update video element
+            video = createCapture(VIDEO);
+            video.size(320, 240); // Set the size of the video feed
+            video.hide(); // Hide the video element
+          })
+          .catch(function (error) {
+            // Camera access denied or error occurred
+            console.error("Error accessing camera:", error);
+          });
+      }
+    </script>
+  </body>
+</html>

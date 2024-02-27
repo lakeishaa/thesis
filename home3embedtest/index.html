@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>p5.js Embedded Website with Camera Access</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+  <script>
+    let embeddedSite;
+
+    function setup() {
+      createCanvas(400, 400);
+      embeddedSite = createDiv(); // Create a div to hold the embedded website
+      embeddedSite.size(400, 400); // Set the size of the div
+      embeddedSite.position(0, 0); // Position the div at the top-left corner
+
+      // Load the embedded website
+      embeddedSite.elt.innerHTML = `<iframe id="embeddedFrame" src="embedded.html" width="400" height="400"></iframe>`;
+    }
+
+    function draw() {
+      // Draw any additional content on the canvas
+      background(220);
+      fill(0);
+      textSize(16);
+      text("This is the p5.js parent website", 10, 20);
+    }
+  </script>
+</body>
+</html>
