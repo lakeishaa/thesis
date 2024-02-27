@@ -8,26 +8,24 @@
     <style>
       body {
         background-color: red; /* Set background color to red */
+        margin: 0; /* Remove default margin */
+        overflow: hidden; /* Hide overflow */
       }
     </style>
   </head>
   <body>
-    <h1>Embedded Website</h1>
+    <!-- <h1>Embedded Website</h1> -->
 
-    <button onclick="requestCameraAccess()">Request Camera Access</button>
+    <!-- <button onclick="requestCameraAccess()">Request Camera Access</button> -->
 
     <!-- Div to hold the p5.js sketch -->
     <div id="sketchContainer"></div>
 
     <script>
-      //https://editor.p5js.org/TheAmazingLardo/sketches/k0C1Onxmr
-
       var gl;
       let video;
-
       let canvas;
-      let canvas1;
-      let canvas2;
+      let test;
 
       // shaders
       var frag = `
@@ -103,28 +101,25 @@ gl_FragColor = vec4(color,1.);
       // setup
       function setup() {
         pixelDensity(1);
-        canvas = createCanvas(windowWidth / 2, windowHeight / 2, WEBGL);
+        canvas = createCanvas(windowWidth, windowHeight, WEBGL);
         gl = canvas.elt.getContext("webgl");
         gl.disable(gl.DEPTH_TEST);
 
         video = createCapture(VIDEO); // Create a video capture object
-
         video.size(width, height); // Set video size to canvas size
-
         video.hide(); // Hide the video element
 
-        test = new p5.Shader(this._renderer, vert, frag); // Load shaders
-
-        //shader(test); // Apply shaders
+        test = createShader(vert, frag); // Create shader
       }
 
       function draw() {
+        background(0);
         test.setUniform("iResolution", [width, height]);
         test.setUniform("iMouse", [mouseX, mouseY]);
         test.setUniform("iImg", video); // Use video as texture
 
         shader(test);
-        box(min(width, height));
+        rect(-width / 2, -height / 2, width, height);
       }
 
       function requestCameraAccess() {
@@ -134,13 +129,18 @@ gl_FragColor = vec4(color,1.);
           .then(function (stream) {
             // Camera access granted, update video element
             video = createCapture(VIDEO);
-            video.size(320, 240); // Set the size of the video feed
+            video.size(windowWidth, windowHeight); // Set the size of the video feed to match window
             video.hide(); // Hide the video element
           })
           .catch(function (error) {
             // Camera access denied or error occurred
             console.error("Error accessing camera:", error);
           });
+      }
+
+      // Resize canvas when window is resized
+      function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);
       }
     </script>
   </body>

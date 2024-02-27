@@ -1,6 +1,5 @@
 let embeddedSite;
 let embeddedSite2;
-let embeddedSite3; // New embedded site
 
 var capture;
 var tracker;
@@ -20,16 +19,10 @@ function setup() {
 
   embeddedSite2 = createDiv(); // Create a div to hold the second embedded website
   embeddedSite2.size(200, 200); // Set the size of the second div to match the webcam frame
-  embeddedSite2.position(0, 0); // Position the second div at the top-left corner
+  // embeddedSite2.position(500, -1000); // Position the second div at the top-left corner
 
   // Load the second embedded website with the same styling, position, and size as the first one
   embeddedSite2.elt.innerHTML = `<iframe id="embeddedFrame2" src="https://lakeishaa.github.io/thesis/experiment-2/version-2/" width="200" height="200" style="border-radius: 50%; border: none;"></iframe>`;
-
-  embeddedSite3 = createDiv(); // Create a div to hold the third embedded website
-  embeddedSite3.size(200, 200); // Set the size of the div to match the webcam frame
-
-  // Load the third embedded website with the same styling, position, and size as the first one
-  embeddedSite3.elt.innerHTML = `<iframe id="embeddedFrame3" src="experiment-distort" width="200" height="200" style="border-radius: 50%; border: none;"></iframe>`;
 
   canvasX = (windowWidth - width) / 2; // Calculate canvas X position
   canvasY = (windowHeight - height) / 2; // Calculate canvas Y position
@@ -77,9 +70,6 @@ function draw() {
     // Adjust the position of the second embedded website to be on top of the iris
     embeddedSite2.position(xc + 220, ys - 106); // Adjust position based on the half size of the embedded site
 
-    // Adjust the position of the third embedded website to be centered on the iris
-    embeddedSite3.position(xc + 220, ys - 106); // Center the third embedded site on the iris
-
     background(255); // Set the background color to grey
 
     // Drop shadow for the white circle
@@ -126,19 +116,12 @@ function draw() {
     if (angle >= 270 && angle <= 300) {
       embeddedSite.show(); // Show the first embedded website
       embeddedSite2.hide(); // Hide the second embedded website
-      embeddedSite3.hide(); // Hide the third embedded website
     } else if (angle >= 100 && angle <= 140) {
       embeddedSite.hide(); // Hide the first embedded website
       embeddedSite2.show(); // Show the second embedded website
-      embeddedSite3.hide(); // Hide the third embedded website
-    } else if (angle >= 190 && angle <= 240) {
-      embeddedSite.hide(); // Hide the first embedded website
-      embeddedSite2.hide(); // Hide the second embedded website
-      embeddedSite3.show(); // Show the third embedded website
     } else {
       embeddedSite.hide(); // Hide the first embedded website
       embeddedSite2.hide(); // Hide the second embedded website
-      embeddedSite3.hide(); // Hide the third embedded website
     }
   }
 }
