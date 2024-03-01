@@ -68,10 +68,12 @@ let seconds = 0,
   minutes = 0,
   hours = 0;
 
+// Function to start the stopwatch
 function startStopwatch() {
   timerInterval = setInterval(updateTimer, 1000);
 }
 
+// Function to update the timer
 function updateTimer() {
   seconds++;
   if (seconds === 60) {
@@ -85,16 +87,43 @@ function updateTimer() {
   updateTimerDisplay();
 }
 
+// Function to update the timer display
 function updateTimerDisplay() {
   const formattedTime = pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
   document.getElementById("timer").innerText = formattedTime;
 }
 
+// Function to pad numbers with leading zeros
 function pad(num) {
   return (num < 10 ? "0" : "") + num;
+}
+
+// Function to save the timer state in cookies
+function saveTimerState() {
+  document.cookie = `timer=${hours}:${minutes}:${seconds}`;
+}
+
+// Function to retrieve the timer state from cookies
+function retrieveTimerState() {
+  const cookies = document.cookie.split(";");
+  for (let cookie of cookies) {
+    const [name, value] = cookie.split("=");
+    if (name.trim() === "timer") {
+      const [h, m, s] = value.split(":").map(Number);
+      hours = h;
+      minutes = m;
+      seconds = s;
+      updateTimerDisplay();
+      break;
+    }
+  }
 }
 
 // Start the stopwatch when the page loads
 startStopwatch();
 
-// You may want to handle pausing/resuming when the user switches tabs or leaves the page
+// Save timer state when window is closed or refreshed
+window.addEventListener("beforeunload", saveTimerState);
+
+// Retrieve timer state when the window is reopened
+window.addEventListener("load", retrieveTimerState);

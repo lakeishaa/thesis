@@ -55,3 +55,47 @@ h1 {
   position: absolute;
   font-size: 24px;
 }
+
+#desc-1 {
+  font-size: 24px;
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding-left: center;
+  padding-right: center;
+  text-align: center;
+  top: 50vh;
+  position: absolute;
+  margin-left: 20px;
+}
+
+#desc-2 {
+  font-size: 24px;
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding-left: center;
+  padding-right: center;
+  text-align: center;
+  top: 50vh;
+  position: absolute;
+  right: 0; /* Positioning on the right side */
+  margin-right: 20px;
+}
+
+#desc-2:hover {
+  color: white !important;
+  background-color: black;
+}
+
+#desc-2 a {
+  text-decoration: none; /* Remove underline */
+  color: black; /* Set link color */
+}
+
+
+
+
+<video width="1920" height="1080" autoplay="" muted="" loop="" playsinline="" class="" data-scale="73" style="width: 714.203px; height: 401.739px;"> <source src="https://files.cargocollective.com/c2154624/projet4-website-surya.mp4" type="video/mp4"> </video>
