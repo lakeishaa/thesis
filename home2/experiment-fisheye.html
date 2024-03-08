@@ -7,9 +7,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <style>
       body {
-        background-color: red; /* Set background color to red */
+        background-color: white; /* Set background color to red */
         margin: 0; /* Remove default margin */
         overflow: hidden; /* Hide overflow */
+      }
+
+      #submitButton {
+        z-index: 100000;
+        bottom: 10px; 
       }
     </style>
   </head>
@@ -20,6 +25,8 @@
 
     <!-- Div to hold the p5.js sketch -->
     <div id="sketchContainer"></div>
+
+    <button id="submitButton">Submit</button>
 
     <script>
       var gl;

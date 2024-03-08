@@ -2,51 +2,37 @@ let myShader;
 let video; // Variable to hold the webcam feed
 
 function preload() {
-  myShader = loadShader('shader/shader.vert', 'shader/shader.frag');
+  myShader = loadShader("shader/shader.vert", "shader/shader.frag");
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  
+
   // Create a video capture object and hide the DOM element
   video = createCapture(VIDEO);
   video.size(width, height);
   video.hide();
 
   shader(myShader);
-  
+
   // Set the shader uniform to the video feed
-  myShader.setUniform('tex', video);
+  myShader.setUniform("tex", video);
   noStroke();
 }
 
 function draw() {
   background(255, 0, 0);
 
-  // Use screen width for frequency and screen height for amplitude
-  let freq;
-  let amp;
+  // Use mouse X position for frequency and mouse Y position for amplitude
+  let freq = map(mouseX, 0, width, 0.0, 1000.0); // Adjusted maximum frequency to 20.0
+  let amp = map(mouseY, 0, height, 0.0, 1.0);
 
-  // Adjust the divisor as needed for frequency and amplitude
-  if (width <= 1300) {
-    // When screen width is 1300 pixels or below, keep the webcam normal
-    freq = 1.0;
-    amp = 0.0;
-  } else {
-    // As the screen gets wider, increase frequency and amplitude change
-    freq = (width - 1300) / 500.0;
-    amp = height / 1.0;
-  }
-
-  myShader.setUniform('frequency', freq);
-  myShader.setUniform('amplitude', amp);
-  myShader.setUniform('time', frameCount * 0.01);
+  myShader.setUniform("frequency", freq);
+  myShader.setUniform("amplitude", amp);
+  myShader.setUniform("time", frameCount * 0.01);
 
   rect(0, 0, width, height);
 }
-
-
-
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
