@@ -72,13 +72,13 @@ function draw() {
     ys = constrain(ys, 340, 460); // Same boundaries as Script 1
 
     // Adjust the position of the first embedded website to be on top of the iris
-    embeddedSite.position(xc + 220, ys - 110); // Adjust position based on the half size of the embedded site
+    embeddedSite.position(frameX, frameY);
 
     // Adjust the position of the second embedded website to be on top of the iris
-    embeddedSite2.position(xc + 220, ys - 116); // Adjust position based on the half size of the embedded site
+    embeddedSite2.position(frameX, frameY);
 
     // Adjust the position of the third embedded website to be centered on the iris
-    embeddedSite3.position(xc + 220, ys - 116); // Center the third embedded site on the iris
+    embeddedSite3.position(frameX + frameSize / 2, frameY + frameSize / 2); // Center the third embedded site on the iris
 
     background(255); // Set the background color to grey
 

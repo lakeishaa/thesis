@@ -138,33 +138,3 @@ h1 {
 .circle:nth-child(5) {
   transform: rotate(288deg) translateX(250px);
 }
-
-#modal {
-  /* Other styles */
-  position: absolute;
-  /* Set top and left to center the modal */
-  top: 50%;
-  left: 50%;
-  /* Set the width of the modal */
-  /* width: 500px; */
-  height: 500px;
-  transform: translate(-50%, -50%);
-}
-
-iframe {
-  /* Other styles */
-  position: absolute;
-  /* Set top and left to center the modal */
-  top: 50%;
-  left: 50%;
-  /* Set the width of the modal */
-  /* width: 500px; */
-  width: 800px;
-  height: 520px;
-  transform: translate(-50%, -50%);
-}
-
-.close-btn {
-  position: absolute;
-  z-index: 10000;
-}
